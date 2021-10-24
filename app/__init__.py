@@ -15,4 +15,4 @@ db = SQLAlchemy(appFlask)
 migrate = Migrate(appFlask, db)
 
 # Importar las rutas
-from app import routes, models
+from app import routes
