@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>miVersion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Article-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Contact-Form-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Basic.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Highlight-Blue.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Navigation-with-Button.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Registration-Form-with-Photo.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Testimonials.css')}}">
+</head>
+
+<body>
+    <section class="article-clean">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                    <div class="intro">
+                        <h1 class="text-center">Comentarios</h1>
+                    </div>
+                    <div class="text"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><img src="{{ url_for('static', filename='assets/img/3.jpg')}}"></div>
+            <div class="col-md-6">
+                <section class="contact-clean">
+                    <form method="post">
+                        <h2 class="text-center">Comentarios</h2>
+                        <div class="mb-3"></div>
+                        <div class="mb-3"></div>
+                        <div class="mb-3"><textarea class="form-control" name="message" placeholder="Message" rows="14"></textarea></div>
+                        <div class="mb-3"><button class="btn btn-primary" type="submit">send </button></div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bs-init.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/theme.js')}}"></script>
+</body>
+
+</html>

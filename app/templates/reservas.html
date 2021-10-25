@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>miVersion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Article-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Contact-Form-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Basic.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Clean.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Highlight-Blue.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Navigation-with-Button.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Registration-Form-with-Photo.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Testimonials.css')}}">
+</head>
+
+<body>
+    <section class="article-clean">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                    <div class="intro">
+                        <h1 class="text-center">Habitación Cómoda</h1>
+                        <p class="text-center"><span class="by">by</span> <a href="#">Peter parker</a><span class="date">Sept 8, 2025</span></p>
+                    </div>
+                    <div class="text">
+                        <figure class="figure d-block"></figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div data-bss-parallax-bg="true" style="height: 500px;background-image: url(https://unsplash.it/1800/900?image=1051);background-position: center;background-size: cover;"></div>
+            </div>
+            <div class="col-md-6">
+                <form method="post">
+                    <h2 class="text-center">Reservar</h2>
+                    <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Name"></div>
+                    <div class="mb-3"><input class="form-control is-invalid" type="email" name="email" placeholder="Email"><small class="form-text text-danger">Por favor Ingresa la dirección de correo correcta.</small></div>
+                    <div class="mb-3"></div>
+                    <div class="mb-3"><button class="btn btn-primary" type="submit">enviar</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/bs-init.js')}}"></script>
+    <script src="{{ url_for('static', filename='assets/js/theme.js')}}"></script>
+</body>
+
+</html>
