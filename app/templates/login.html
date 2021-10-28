@@ -34,12 +34,22 @@
                                 <div class="text-center">
                                     <h4 class="text-dark mb-4">Bienvenido de Nuevo</h4>
                                 </div>
-                                <form class="user">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    <ul class=flashes>
+                                        {% for message in messages %}
+                                            <li>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                                {% endwith %}
+                                <form class="user" method="post">
                                     <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." name="email"></div>
                                     <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password"></div>
                                     <div class="mb-3">
                                         <div class="custom-control custom-checkbox small">
-                                            <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Recuerdame</label></div>
+                                            <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck", name="formCheck">
+                                                <label class="form-check-label custom-control-label" for="formCheck-1">Recuerdame</label></div>
                                         </div>
                                     </div><button class="btn btn-primary d-block btn-user w-100" type="submit">Iniciar sesion</button>
                                     <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Iniciar secion con Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Iniciar sesion con Facebook</a>

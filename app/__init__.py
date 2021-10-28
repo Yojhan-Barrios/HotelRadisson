@@ -3,6 +3,7 @@ from flask import Flask
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
 
 # Instancia de la clase Flask
 appFlask = Flask(__name__)
@@ -14,5 +15,9 @@ appFlask.config.from_object(Config)
 db = SQLAlchemy(appFlask)
 migrate = Migrate(appFlask, db)
 
+# Configurar el login
+login = LoginManager(appFlask)
+login.login_view = 'login'
+
 # Importar las rutas
-from app import routes
+from app import routes, models

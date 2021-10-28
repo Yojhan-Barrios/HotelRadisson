@@ -30,7 +30,16 @@
                     <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">Servicios&nbsp;</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
                     </li>
-                </ul><a class="login" href="#">Log In</a><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span>
+                </ul>
+                <!--Codigo jinja que compara si existe el argumento perfil-->
+                {% if username %}
+                    <a class="dropdown-toggle nav-link show" aria-expanded="true" data-bs-toggle="dropdown" href="#">
+                    <span class="d-none d-lg-inline me-2 text-gray-600 small">{{username}}</span>
+                    <img class="border rounded-circle img-profile" src="/static/assets/img/avatars/avatar1.jpeg"">
+                    </a>
+                {% else %}
+                    <a class="login" href="#">Log In</a><span class="navbar-text actions"> <a class="btn btn-light action-button" role="button" href="#">Sign Up</a></span>
+                {% endif %}
             </div>
         </div>
     </nav>
