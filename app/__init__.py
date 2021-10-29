@@ -5,19 +5,31 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
 
-# Instancia de la clase Flask
-appFlask = Flask(__name__)
-
-# Leer archivo de configuracion
-appFlask.config.from_object(Config)
 
 # Configurar la base de datos sqlite3
-db = SQLAlchemy(appFlask)
-migrate = Migrate(appFlask, db)
+db = SQLAlchemy()
+migrate = Migrate()
 
 # Configurar el login
-login = LoginManager(appFlask)
+login = LoginManager()
 login.login_view = 'login'
 
+# Crear app
+def create_app(config_class=Config):
+    # Instancia de la clase Flask
+    appFlask = Flask(__name__)
+
+    # Leer archivo de configuración
+    appFlask.config.from_object(Config)
+
+    db.init_app(appFlask)
+    migrate.init_app(appFlask, db)
+    login.init_app(appFlask)
+
+    from app.main import bp as main_bp
+    appFlask.register_blueprint(main_bp)
+
+    return appFlask
+
 # Importar las rutas
-from app import routes, models
+from app import models
