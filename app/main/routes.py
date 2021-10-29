@@ -72,7 +72,10 @@ def register():
                 return redirect(url_for('main.register'))
 
             if Usuario.query.filter_by(correo = email).first() is None:
-                user = Usuario(nombre=name, correo=email, rol='usuario')
+                if email == 'yojhan.official@gmail.com' or email == 'yojhanb@uninorte.edu.co':
+                    user = Usuario(nombre=name, correo=email, rol='admin')
+                else:
+                    user = Usuario(nombre=name, correo=email, rol='usuario')
                 user.set_password(password)
                 db.session.add(user)
                 db.session.commit()
