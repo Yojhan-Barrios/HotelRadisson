@@ -11,7 +11,8 @@ from app.main import bp
 @bp.route('/')
 @bp.route('/home')
 def home():
-    if 'id' and 'name' in session:
+    if current_user.is_authenticated:
+        return render_template('home.html', auth=True)
         return render_template('home.html', username=session['name'])
     else:
         return render_template('home.html')
@@ -84,13 +85,16 @@ def register():
             return render_template('register.html')
 
 # Ruta para el perfil
-@bp.route('/profile/')
+@bp.route('/profile/', methods=['GET', 'POST'])
+@login_required
 def profile():
-    if 'id' in session:
-        return render_template('profile.html', username=session['name'])
-    else:
-        return render_template('login.html')
+    if current_user.is_authenticated:
+        return render_template('profile.html')
         
+
+@bp.route('/rooms/')
+def rooms():
+    return render_template('info_rooms.html')   
 
 
 @bp.errorhandler(404)
@@ -109,7 +113,7 @@ def room():
 @bp.route('/dashboard/')
 @login_required
 def dashboard():
-    if current_user.is_authenticated() and current_user.rol == 'admin':
+    if current_user.is_authenticated is True and 'user' == 'user':
         return render_template('dashboard.html')
     return redirect(url_for('main.home'))
 

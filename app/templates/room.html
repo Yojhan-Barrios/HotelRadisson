@@ -4,20 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>miVersion</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <title>diseño_mejorado_kei</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/fonts/ionicons.min.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Article-Clean.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Contact-Form-Clean.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Basic.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Footer-Clean.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Highlight-Blue.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Navigation-with-Button.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Registration-Form-with-Photo.css')}}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/Testimonials.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/fonts/ionicons.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='assets/css/styles.min.css')}}">
 </head>
 
 <body>
@@ -35,23 +29,72 @@
     </section>
     <div class="container">
         <div class="row">
-            <div class="col-md-6"><img src="{{ url_for('static', filename='assets/img/3.jpg')}}"></div>
+            <div class="col-md-6">
+                <section class="article-clean">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                                <div class="intro">
+                                    <h1 class="text-center">Habitación Regualr</h1>
+                                    <p class="text-center"><span class="by">by</span> <a href="#">Hotel Radisson</a></p>
+                                    <img class="img-fluid" src="{{url_for('static', filename='assets/img/desk.jpg')}}">
+                                </div>
+                                <h2>Habitación Regular</h2>
+                                <div class="text">
+                                    <p>La calidad y comodidad que puedes encontrar en nuestras habitaciones es de las
+                                        mejores experiencias hotelería que podemos brindarte en nuestra cadena de
+                                        hoteles.</p>
+                                    <figure class="figure d-block"></figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
             <div class="col-md-6">
                 <section class="contact-clean">
                     <form method="post">
                         <h2 class="text-center">Comentarios</h2>
                         <div class="mb-3"></div>
                         <div class="mb-3"></div>
-                        <div class="mb-3"><textarea class="form-control" name="message" placeholder="Message" rows="14"></textarea></div>
+                        <div class="mb-3"><textarea class="form-control" name="message" placeholder="Message"
+                                rows="14"></textarea></div>
                         <div class="mb-3"><button class="btn btn-primary" type="submit">send </button></div>
                     </form>
+                    <footer class="footer-clean">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-4 col-md-3 item">
+                                    <h3>Services</h3>
+                                    <ul>
+                                        <li><a href="#">Web design</a></li>
+                                        <li><a href="#">Development</a></li>
+                                        <li><a href="#">Hosting</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-sm-4 col-md-3 item">
+                                    <h3>About</h3>
+                                    <ul>
+                                        <li><a href="#">Company</a></li>
+                                        <li><a href="#">Team</a></li>
+                                        <li><a href="#">Legacy</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-3 item social"><a href="#"><i
+                                            class="icon ion-social-facebook"></i></a><a href="#"><i
+                                            class="icon ion-social-twitter"></i></a><a href="#"><i
+                                            class="icon ion-social-instagram"></i></a>
+                                    <p class="copyright">Company Name © 2021</p>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
                 </section>
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{ url_for('static', filename='assets/js/bs-init.js')}}"></script>
-    <script src="{{ url_for('static', filename='assets/js/theme.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/script.min.js')}}"></script>
 </body>
 
 </html>

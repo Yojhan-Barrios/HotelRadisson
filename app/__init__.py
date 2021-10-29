@@ -12,7 +12,7 @@ migrate = Migrate()
 
 # Configurar el login
 login = LoginManager()
-login.login_view = 'login'
+login.login_view = 'main.login'
 
 # Crear app
 def create_app(config_class=Config):
