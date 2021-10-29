@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>diseño_mejorado_kei</title>
+    <title>{{room.nombre}}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
@@ -35,17 +35,21 @@
                         <div class="row">
                             <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                                 <div class="intro">
-                                    <h1 class="text-center">Habitación Regualr</h1>
+                                    <h1 class="text-center">{{room.nombre}}</h1>
                                     <p class="text-center"><span class="by">by</span> <a href="#">Hotel Radisson</a></p>
                                     <img class="img-fluid" src="{{url_for('static', filename='assets/img/desk.jpg')}}">
                                 </div>
-                                <h2>Habitación Regular</h2>
+                                <h2>{{room.nombre}}</h2>
                                 <div class="text">
-                                    <p>La calidad y comodidad que puedes encontrar en nuestras habitaciones es de las
-                                        mejores experiencias hotelería que podemos brindarte en nuestra cadena de
-                                        hoteles.</p>
+                                    <p>{{room.detalles}}.</p>
+                                    <p>Calificacion promedio: {{room.calificacionPromedio}} (Función no disponible).</p>
+                                    <p>Cantidad de calificaciones: {{room.cantidad_calificaciones}}</p>
+                                    <p>Disponible: Sí (Función no disponible).</p>
                                     <figure class="figure d-block"></figure>
                                 </div>
+                                {% if current_user.is_authenticated %}
+                                <a href="/reservation/{{room.id}}"><div class="mb-3"><button class="btn btn-primary" type="">Reservar</button></div></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -53,14 +57,32 @@
             </div>
             <div class="col-md-6">
                 <section class="contact-clean">
-                    <form method="post">
+                    <form method="post" action="/send_message/{{room.id}}">
                         <h2 class="text-center">Comentarios</h2>
                         <div class="mb-3"></div>
                         <div class="mb-3"></div>
+                        {% if current_user.is_authenticated %}
                         <div class="mb-3"><textarea class="form-control" name="message" placeholder="Message"
                                 rows="14"></textarea></div>
                         <div class="mb-3"><button class="btn btn-primary" type="submit">send </button></div>
+                        <a href="/reservation/{{room.id}}"><div class="mb-3"><button class="btn btn-primary" type="">Reservar</button></div></a>
+                        {% endif %}
+
+                        <!--Lista de comentarios Jinja-->
+                        <div class="list-group" >
+                            {% for comentario in comentarios %}
+                            <div class="list-group-item list-group-item-action flex-column align-items-start">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{comentario.nombre_usuario}}</h5>
+                                    <small>Fecha no calculada</small>
+                                </div>
+                                <p class="mb-1">{{comentario.comentario}}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </form>
+                    
+                    
                     <footer class="footer-clean">
                         <div class="container">
                             <div class="row justify-content-center">

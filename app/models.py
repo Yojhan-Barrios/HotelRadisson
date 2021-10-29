@@ -1,3 +1,4 @@
+from enum import unique
 from app import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -6,7 +7,7 @@ from app import login
 # Create a class for the database table
 class Usuario(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nombre = db.Column(db.String(64), index=True, unique=True)
+    nombre = db.Column(db.String(64), index=True)
     correo = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
     rol = db.Column(db.String(64), index=True)
@@ -26,7 +27,7 @@ def load_user(id):
 
 # Clase habitacion
 class Habitacion(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, unique=True)
     nombre = db.Column(db.String(64), index=True)
     detalles = db.Column(db.String, index=True)
     cantidad_calificaciones = db.Column(db.Integer)
@@ -38,7 +39,7 @@ class Habitacion(db.Model):
         return f'<Habitacion {self.nombre}>'
 
 # Clase reservas
-class Reserva(db.Model):
+class Reserva_habitacion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer, db.ForeignKey('usuario.id'))
     id_habitacion = db.Column(db.Integer, db.ForeignKey('habitacion.id'))
@@ -50,3 +51,22 @@ class Reserva(db.Model):
 
     def __repr__(self):
         return f'<Reserva {self.id}>'
+
+class Comentario(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    id_user = db.Column(db.Integer, db.ForeignKey('usuario.id'))
+    id_habitacion = db.Column(db.Integer, db.ForeignKey('habitacion.id'))
+    nombre_usuario = db.Column(db.String(64), index=True)
+    comentario = db.Column(db.String, index=True)
+
+    def __repr__(self):
+        return f'<Comentario {self.id}>'
+
+class Administrador(db.Model):
+    id = db.Column(db.Integer, primary_key=True, index=True, unique=True)
+    id_user = db.Column(db.Integer, db.ForeignKey('usuario.id'), unique=True)
+    rol = db.Column(db.String(64), index=True)
+
+    def __repr__(self):
+        return f'<Administrador {self.id}>'
+

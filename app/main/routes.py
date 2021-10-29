@@ -2,7 +2,7 @@ from flask import render_template, request, session, redirect, url_for, flash
 from markupsafe import escape
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
-from app.models import Usuario
+from app.models import Usuario, Habitacion, Reserva_habitacion, Comentario, Administrador
 from app import db
 from app.main import bp
 
@@ -105,12 +105,48 @@ def page_not_found(error):
     return render_template('error.html', error=error), 404
 
 # Ruta para la habitación
-@bp.route('/room/')
-def room():
-    if 'id' and 'name' in session:
-        return render_template('room.html', username=session['name'])
+@bp.route('/room/<int:room_id>', methods=['GET', 'POST'])
+def room(room_id):
+    if request.method == 'GET':
+        room = Habitacion.query.get(room_id)
+        Comenta = Comentario.query.filter_by(id_habitacion=room_id).all()
+        return render_template('room.html', room = room, comentarios = Comenta)
     else:
-        return render_template('room.html')
+        # Sí mandamos una petición POST
+        # Obtenemos los datos del formulario
+
+        """comentario = request.form['message']
+        id_habitacion = room_id
+        id_usuario = current_user.id
+        nombre_usuario = current_user.nombre
+        # Si el comentario esta vacio
+        if len(comentario) > 3:
+            com = Comentario(comentario=comentario, id_habitacion=id_habitacion, id_user=id_usuario, nombre_usuario=nombre_usuario)
+            db.session.add(com)
+            db.session.commit()"""
+        room = Habitacion.query.get(room_id)
+        Comenta = Comentario.query.filter_by(id_habitacion=room_id).all()
+        return render_template('room.html', room = room, comentarios = Comenta)
+
+
+@bp.route('/send_message/<int:room_id>', methods=['GET', 'POST'])
+def send_message(room_id):
+    if request.method == 'GET':
+        return render_template('send_message.html')
+    else:
+        # Sí mandamos una petición POST
+        # Obtenemos los datos del formulario
+        comentario = request.form['message']
+        id_habitacion = room_id
+        id_usuario = current_user.id
+        nombre_usuario = current_user.nombre
+        # Si el comentario esta vacio
+        if len(comentario) > 3:
+            com = Comentario(comentario=comentario, id_habitacion=id_habitacion, id_user=id_usuario, nombre_usuario=nombre_usuario)
+            db.session.add(com)
+            db.session.commit()
+        return redirect('/room/' + str(room_id))
+
 
 # Ruta para el dashboard adminisrativo
 @bp.route('/dashboard/')
@@ -130,9 +166,15 @@ def table():
         return redirect(url_for('main.home'))
 
 # Ruta para la reserva de habitación
-@bp.route('/reservation/')
-def reservation():
-    return render_template('reservation.html')
+@bp.route('/reservation/<int:room_id>/')
+def reservation(room_id):
+
+    if current_user.is_authenticated:
+        nombreHabitacion = Habitacion.query.get(room_id).nombre
+        return render_template('reservas.html', nombreHabitacion = nombreHabitacion, room_id = room_id)
+    else:
+        return redirect(url_for('main.home'))
+
 
 # Ruta room_details
 @bp.route('/room_details/')

@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>diseño_mejorado_kei</title>
+    <title>Reserva de habitación</title>
     <link rel="stylesheet" href="{{url_for('static', filename='assets/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
                     <div class="intro">
-                        <h1 class="text-center">Habitación Cómoda</h1>
+                        <h1 class="text-center">{{nombreHabitacion}}</h1>
                         <p class="text-center"><span class="by">by</span> <a href="#">Hotel radisson</a><span
                                 class="date">oct, 2025</span></p>
                     </div>
@@ -39,13 +39,28 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <form method="post">
+                <form method="GET" action="/reservar/{{room_id}}">
                     <h2 class="text-center">Reservar</h2>
-                    <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Name"></div>
-                    <div class="mb-3"><input class="form-control is-invalid" type="email" name="email"
-                            placeholder="Email"><small class="form-text text-danger">Por favor Ingresa la dirección de
-                            correo correcta.</small></div>
-                    <div class="mb-3"></div>
+                    
+                    <!--Fecha de inicio con input de fecha-->
+                    <div class="mb-3">
+                        <label for="checkin">Fecha de inicio</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                            <input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
+                        </div>
+                    </div>
+                    <!--Fecha de fin con input de fecha-->
+                    <div class="mb-3">
+                        <label for="checkout">Fecha de fin</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                            <input type="date" class="form-control" id="fechaFin" name="fechaFin" required>
+                        </div>
                     <div class="mb-3"><button class="btn btn-primary" type="submit">Enviar</button></div>
                 </form>
             </div>
